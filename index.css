@@ -2,34 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-color: #020617;
-  color: #f8fafc;
-  overflow-x: hidden;
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-50 overflow-x-hidden;
+  }
 }
 
-.glass-card {
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
+@layer utilities {
+  .glass-card {
+    @apply bg-slate-900/60 backdrop-blur-md border border-white/5;
+  }
+  
+  .glass-nav {
+    @apply bg-slate-950/80 backdrop-blur-md border-b border-white/5;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-primary-400 via-accent-500 to-purple-500;
+  }
 
-.glass-nav {
-  background: rgba(2, 6, 23, 0.8);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.text-gradient {
-  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.grid-bg {
-  background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-  linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 30px 30px;
+  .grid-bg {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
 }

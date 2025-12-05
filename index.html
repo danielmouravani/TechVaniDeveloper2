@@ -8,7 +8,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS for local preview -->
+    <!-- ImportMap para React no navegador local -->
+    <script type="importmap">
+    {
+      "imports": {
+        "vite": "https://aistudiocdn.com/vite@^7.2.6",
+        "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1",
+        "react/": "https://aistudiocdn.com/react@^19.2.1/",
+        "react": "https://aistudiocdn.com/react@^19.2.1",
+        "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+        "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0"
+      }
+    }
+    </script>
+
+    <!-- Tailwind CSS via CDN para visualização LOCAL (Preview) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -33,7 +47,7 @@
                 950: '#082f49',
               },
               accent: {
-                500: '#6366f1', // Indigo
+                500: '#6366f1',
                 600: '#4f46e5',
               }
             },
@@ -50,44 +64,40 @@
             }
           },
         },
+        plugins: [],
       }
     </script>
+    
+    <!-- ESTILOS CUSTOMIZADOS PARA O CDN (PREVIEW LOCAL) -->
+    <!-- O Netlify ignorará isso e usará o index.css, mas o navegador precisa disso AGORA -->
     <style type="text/tailwindcss">
       @layer utilities {
         .glass-card {
           @apply bg-slate-900/60 backdrop-blur-md border border-white/5;
         }
+        
         .glass-nav {
           @apply bg-slate-950/80 backdrop-blur-md border-b border-white/5;
         }
+        
         .text-gradient {
           @apply bg-clip-text text-transparent bg-gradient-to-br from-primary-400 via-accent-500 to-purple-500;
         }
       }
-      
+    </style>
+    
+    <!-- CSS PURO (Compatível com ambos) -->
+    <style>
       body {
-        @apply bg-slate-950 text-slate-50 overflow-x-hidden;
+        background-color: #082f49; /* Fallback visual */
+        color: #f8fafc;
       }
-      
       .grid-bg {
         background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
         background-size: 30px 30px;
       }
     </style>
-
-    <script type="importmap">
-{
-  "imports": {
-    "react": "https://aistudiocdn.com/react@^19.2.1",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
-    "react/": "https://aistudiocdn.com/react@^19.2.1/",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0",
-    "vite": "https://aistudiocdn.com/vite@^7.2.6",
-    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1"
-  }
-}
-</script>
   </head>
   <body>
     <div id="root"></div>
