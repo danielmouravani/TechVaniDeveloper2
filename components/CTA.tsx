@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { ArrowRight, Mail } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const CTA: React.FC = () => {
   const whatsappLink = "https://wa.me/5521970690315?text=Ol%C3%A1%2C%20vim%20atrav%C3%A9s%20do%20site%20e%20tenho%20interesse%20em%20desenvolver%20um%20site%20ou%20aplicativo";
@@ -26,17 +27,10 @@ const CTA: React.FC = () => {
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 rounded-xl bg-blue-600 text-white font-bold text-lg hover:bg-blue-500 transition-all hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] flex items-center justify-center gap-2 hover:-translate-y-1"
+              className="px-8 py-4 rounded-xl bg-blue-600 text-white font-bold text-lg hover:bg-blue-500 transition-all hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] flex items-center justify-center gap-2 hover:-translate-y-1 w-full sm:w-auto"
             >
               Solicitar Orçamento
               <ArrowRight size={20} />
-            </a>
-            <a 
-              href="mailto:contato@techvani.com" 
-              className="px-8 py-4 rounded-xl glass-card text-white font-medium text-lg hover:bg-white/10 transition-all border border-white/10 flex items-center justify-center gap-2"
-            >
-              <Mail size={20} />
-              Enviar E-mail
             </a>
           </div>
         </div>

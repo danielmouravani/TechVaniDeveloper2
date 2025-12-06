@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
@@ -51,7 +52,7 @@ const Navbar: React.FC = () => {
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(56,189,248,0.3)] active:scale-95 text-sm"
+              className="px-6 py-2.5 rounded-lg bg-primary-600 hover:bg-primary-500 text-white font-medium transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(14,165,233,0.4)] active:scale-95 text-sm"
             >
               Agendar Reunião
             </a>

@@ -1,8 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const whatsappLink = "https://wa.me/5521970690315?text=Ol%C3%A1%2C%20vim%20atrav%C3%A9s%20do%20site%20e%20tenho%20interesse%20em%20desenvolver%20um%20site%20ou%20aplicativo";
+
+  // Typewriter Effect Logic
+  const phrases = ["destaque absoluto", "autoridade digital", "resultados reais"];
+  const [currentText, setCurrentText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopNum, setLoopNum] = useState(0);
+  const [typingSpeed, setTypingSpeed] = useState(150);
+
+  useEffect(() => {
+    const handleTyping = () => {
+      const i = loopNum % phrases.length;
+      const fullText = phrases[i];
+
+      setCurrentText(isDeleting 
+        ? fullText.substring(0, currentText.length - 1) 
+        : fullText.substring(0, currentText.length + 1)
+      );
+
+      setTypingSpeed(isDeleting ? 50 : 150);
+
+      if (!isDeleting && currentText === fullText) {
+        setTimeout(() => setIsDeleting(true), 2000); // Pause at end
+      } else if (isDeleting && currentText === "") {
+        setIsDeleting(false);
+        setLoopNum(loopNum + 1);
+        setTypingSpeed(500); // Pause before new typing
+      }
+    };
+
+    const timer = setTimeout(handleTyping, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [currentText, isDeleting, loopNum, typingSpeed, phrases]);
 
   return (
     <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
@@ -15,9 +47,12 @@ const Hero: React.FC = () => {
         </div>
 
         {/* Headline */}
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tighter mb-8 leading-[1.1]">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tighter mb-8 leading-[1.1] min-h-[160px] md:min-h-[220px]">
           Sua marca merece <br className="hidden md:block" />
-          <span className="text-gradient">destaque absoluto</span>
+          <span className="text-gradient">
+            {currentText}
+            <span className="text-white animate-cursor-blink ml-1">|</span>
+          </span>
         </h1>
 
         {/* Subheadline */}
