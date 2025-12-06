@@ -17,6 +17,7 @@
         "react/": "https://aistudiocdn.com/react@^19.2.1/",
         "react": "https://aistudiocdn.com/react@^19.2.1",
         "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+        "react-dom": "https://aistudiocdn.com/react-dom@^19.2.1",
         "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0"
       }
     }
@@ -73,30 +74,39 @@
       }
     </script>
     
-    <!-- ESTILOS CUSTOMIZADOS PARA O CDN (PREVIEW LOCAL) -->
-    <!-- O Netlify ignorará isso e usará o index.css, mas o navegador precisa disso AGORA -->
-    <style type="text/tailwindcss">
-      @layer utilities {
-        .glass-card {
-          @apply bg-slate-900/60 backdrop-blur-md border border-white/5;
-        }
-        
-        .glass-nav {
-          @apply bg-slate-950/80 backdrop-blur-md border-b border-white/5;
-        }
-        
-        .text-gradient {
-          @apply bg-clip-text text-transparent bg-gradient-to-br from-primary-400 via-accent-500 to-purple-500;
-        }
-      }
-    </style>
-    
-    <!-- CSS PURO (Compatível com ambos) -->
+    <!-- ESTILOS CSS PURO PARA O PREVIEW LOCAL -->
+    <!-- Substituímos @apply por CSS normal aqui para o Netlify não dar erro -->
     <style>
       body {
-        background-color: #082f49; /* Fallback visual */
+        background-color: #082f49;
         color: #f8fafc;
       }
+      
+      /* Equivalente ao .glass-card do Tailwind */
+      .glass-card {
+        background-color: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      
+      /* Equivalente ao .glass-nav do Tailwind */
+      .glass-nav {
+        background-color: rgba(2, 6, 23, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      
+      /* Equivalente ao .text-gradient do Tailwind */
+      .text-gradient {
+        background: linear-gradient(to bottom right, #38bdf8, #6366f1, #a855f7);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+      }
+
       .grid-bg {
         background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
