@@ -1,34 +1,35 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { Zap, Sparkles, TrendingUp, ShieldCheck, MonitorSmartphone, Rocket } from 'lucide-react';
 
 const features = [
   {
-    icon: <MonitorSmartphone className="text-blue-400" size={32} />,
+    icon: <MonitorSmartphone className="text-primary-400" size={32} />,
     title: "100% Responsivo",
     description: "Seu site perfeito em qualquer dispositivo. Do celular ao desktop, a experiência do seu cliente será impecável."
   },
   {
-    icon: <Zap className="text-amber-400" size={32} />,
+    icon: <Zap className="text-accent-500" size={32} />,
     title: "Velocidade Extrema",
     description: "Ninguém gosta de sites lentos. Otimizo cada linha de código para garantir carregamento instantâneo."
   },
   {
-    icon: <Sparkles className="text-indigo-400" size={32} />,
+    icon: <Sparkles className="text-primary-500" size={32} />,
     title: "Design Premium",
     description: "Visual moderno e 'High-Tech' que transmite autoridade imediata para sua marca ou empresa."
   },
   {
-    icon: <TrendingUp className="text-emerald-400" size={32} />,
+    icon: <TrendingUp className="text-accent-600" size={32} />,
     title: "Foco em Vendas",
     description: "Não é apenas beleza. Estruturo o site estrategicamente para converter visitantes em orçamentos e vendas."
   },
   {
-    icon: <ShieldCheck className="text-cyan-400" size={32} />,
+    icon: <ShieldCheck className="text-primary-600" size={32} />,
     title: "Segurança Total",
     description: "Proteção de dados e estabilidade garantida. Seu site online 24 horas por dia, 7 dias por semana."
   },
   {
-    icon: <Rocket className="text-rose-400" size={32} />,
+    icon: <Rocket className="text-accent-500" size={32} />,
     title: "Pronto para Crescer",
     description: "Tecnologia escalável. Comece hoje e tenha uma estrutura pronta para acompanhar o crescimento do seu negócio."
   }
@@ -36,36 +37,49 @@ const features = [
 
 const Features: React.FC = () => {
   return (
-    <section id="features" className="py-24 relative bg-slate-950">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-display font-bold mb-4 text-white">
-            Soluções completas para <span className="text-gradient">você e seu negócio</span>
+    <section id="features" className="py-24 lg:py-40 relative bg-[#020617] overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-20"
+        >
+          <h2 className="text-4xl md:text-6xl font-display font-bold mb-6 text-white">
+            Soluções <span className="text-gradient">High-End</span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            Tudo o que você precisa para se destacar no digital, feito sob medida.
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto font-light">
+            Tudo o que você precisa para se destacar no digital, construído com as tecnologias mais modernas do mercado.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <div 
+            <motion.div 
               key={index}
-              className="glass-card p-8 rounded-2xl hover:bg-white/5 transition-all duration-300 hover:-translate-y-2 group border border-white/5 hover:border-primary-500/20"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="glass-card p-10 rounded-[2.5rem] group hover:bg-white/[0.05] transition-all duration-500 border border-white/10 hover:border-primary-500/30"
             >
-              <div className="w-14 h-14 rounded-xl bg-slate-900/80 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border border-white/10 shadow-lg">
+              <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-primary-500/10 transition-all duration-500 border border-white/5">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary-400 transition-colors">
+              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-primary-400 transition-colors duration-500">
                 {feature.title}
               </h3>
-              <p className="text-slate-400 leading-relaxed text-sm">
+              <p className="text-slate-400 leading-relaxed font-light">
                 {feature.description}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
+      
+      {/* Decorative background glow */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary-600/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent-600/5 rounded-full blur-[120px] pointer-events-none" />
     </section>
   );
 };

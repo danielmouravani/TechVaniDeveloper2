@@ -6,7 +6,7 @@
     <title>TechVani | Desenvolvimento Web Premium</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- ImportMap para React no navegador local -->
     <script type="importmap">
@@ -18,7 +18,8 @@
         "react": "https://aistudiocdn.com/react@^19.2.1",
         "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
         "react-dom": "https://aistudiocdn.com/react-dom@^19.2.1",
-        "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0"
+        "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0",
+        "motion/react": "https://aistudiocdn.com/motion@^12.4.7/react"
       }
     }
     </script>
@@ -52,22 +53,6 @@
                 600: '#4f46e5',
               }
             },
-            animation: {
-              'float': 'float 6s ease-in-out infinite',
-              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-              'spin-slow': 'spin 12s linear infinite',
-              'cursor-blink': 'cursor-blink 1s step-end infinite',
-            },
-            keyframes: {
-              float: {
-                '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-20px)' },
-              },
-              'cursor-blink': {
-                '0%, 100%': { opacity: '1' },
-                '50%': { opacity: '0' },
-              }
-            }
           },
         },
         plugins: [],
@@ -75,32 +60,28 @@
     </script>
     
     <!-- ESTILOS CSS PURO PARA O PREVIEW LOCAL -->
-    <!-- Substituímos @apply por CSS normal aqui para o Netlify não dar erro -->
     <style>
       body {
-        background-color: #082f49;
+        background-color: #020617;
         color: #f8fafc;
       }
       
-      /* Equivalente ao .glass-card do Tailwind */
       .glass-card {
-        background-color: rgba(15, 23, 42, 0.6);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        background-color: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
       }
       
-      /* Equivalente ao .glass-nav do Tailwind */
       .glass-nav {
         background-color: rgba(2, 6, 23, 0.8);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       }
       
-      /* Equivalente ao .text-gradient do Tailwind */
       .text-gradient {
-        background: linear-gradient(to bottom right, #38bdf8, #6366f1, #a855f7);
+        background: linear-gradient(to bottom right, #ffffff, #38bdf8, #6366f1);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -110,7 +91,12 @@
       .grid-bg {
         background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-        background-size: 30px 30px;
+        background-size: 50px 50px;
+      }
+
+      .noise-bg {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        opacity: 0.05;
       }
     </style>
   </head>

@@ -1,8 +1,8 @@
 
 import React from 'react';
+import { motion } from 'motion/react';
 import { ExternalLink, ArrowRight, Smile, Scissors, Eye } from 'lucide-react';
 
-// SUBSTITUA ESTES DADOS PELOS SEUS PROJETOS REAIS
 const projects = [
   {
     title: "Clínica de Ortodontia Premium",
@@ -32,69 +32,88 @@ const projects = [
 
 const Portfolio: React.FC = () => {
   return (
-    <section id="portfolio" className="py-24 bg-slate-950 relative">
+    <section id="portfolio" className="py-24 lg:py-40 bg-[#020617] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-display font-bold mb-4 text-white">
-            Meu <span className="text-gradient">Portfolio</span> Selecionado
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-20"
+        >
+          <h2 className="text-4xl md:text-6xl font-display font-bold mb-6 text-white">
+            Projetos <span className="text-gradient">Selecionados</span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            Projetos reais que unem design sofisticado e performance técnica.
-            Do setor de saúde ao varejo de luxo.
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto font-light">
+            Uma vitrine de experiências digitais que unem design de alto nível e performance técnica impecável.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {projects.map((project, index) => (
-            <div key={index} className="group relative rounded-2xl overflow-hidden glass-card border border-white/10 hover:border-blue-500/50 transition-all duration-500 h-[400px]">
-              {/* Image Container */}
-              <div className="absolute inset-0 h-full w-full">
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent opacity-90 group-hover:opacity-80 transition-opacity duration-300"></div>
-              </div>
-
-              {/* Content Overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 flex flex-col h-full justify-end">
-                <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  <div className="flex items-center gap-2 mb-3">
-                      <div className="p-2 rounded-lg bg-white/10 backdrop-blur-md">
-                        {project.icon}
-                      </div>
-                      <span className="text-blue-300 text-xs font-bold tracking-wider uppercase bg-blue-900/30 px-2 py-1 rounded border border-blue-500/20">
-                        {project.category}
-                      </span>
-                  </div>
-                  
-                  <h3 className="text-2xl font-bold text-white mb-2 leading-tight">{project.title}</h3>
-                  
-                  <div className="h-0 group-hover:h-auto overflow-hidden transition-all duration-500 opacity-0 group-hover:opacity-100">
-                    <p className="text-slate-300 text-sm mb-4 leading-relaxed">
-                      {project.desc}
-                    </p>
-                    <a 
-                      href={project.link} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-white font-medium hover:text-primary-400 transition-colors"
-                    >
-                      Ver Projeto <ExternalLink size={16} />
-                    </a>
-                  </div>
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.2 }}
+              className="group relative aspect-[16/10] rounded-[2rem] overflow-hidden bg-slate-900 border border-white/10"
+            >
+              <img 
+                src={project.image} 
+                alt={project.title} 
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                referrerPolicy="no-referrer"
+              />
+              
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
+              
+              {/* Content */}
+              <div className="absolute inset-0 p-8 lg:p-12 flex flex-col justify-end">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-primary-400 text-[10px] uppercase tracking-widest font-bold">
+                    {project.category}
+                  </span>
+                </div>
+                
+                <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4 group-hover:text-primary-400 transition-colors duration-500">
+                  {project.title}
+                </h3>
+                
+                <p className="text-slate-300 text-lg mb-8 max-w-lg opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                  {project.desc}
+                </p>
+                
+                <div className="flex items-center justify-between">
+                  <a 
+                    href={project.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-3 text-white font-bold text-lg group/link"
+                  >
+                    Explorar Projeto 
+                    <div className="p-2 rounded-full bg-white/10 group-hover/link:bg-primary-500 transition-colors">
+                      <ExternalLink size={20} />
+                    </div>
+                  </a>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
-        <div className="mt-12 text-center">
-            <a href="#contact" className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors border-b border-transparent hover:border-primary-500 pb-1">
-                Quero um projeto neste nível <ArrowRight size={16} />
-            </a>
-        </div>
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-20 text-center"
+        >
+          <a href="#contact" className="inline-flex items-center gap-4 text-slate-400 hover:text-white transition-all duration-500 group text-xl font-light">
+            Quero um projeto neste nível 
+            <div className="w-12 h-px bg-slate-800 group-hover:w-20 group-hover:bg-primary-500 transition-all duration-500" />
+            <ArrowRight size={24} className="group-hover:translate-x-2 transition-transform duration-500" />
+          </a>
+        </motion.div>
       </div>
     </section>
   );

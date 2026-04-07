@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 
 const Navbar: React.FC = () => {
@@ -17,44 +18,49 @@ const Navbar: React.FC = () => {
 
   const navLinks = [
     { name: 'Expertise', href: '#features' },
-    { name: 'Processo', href: '#process' },
+    { name: 'Diferencial', href: '#differential' },
     { name: 'Portfolio', href: '#portfolio' },
   ];
 
   return (
-    <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'glass-nav py-4' : 'bg-transparent py-6'
+    <motion.nav 
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled ? 'py-4' : 'py-8'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
+        <div className={`relative flex justify-between items-center px-6 py-3 rounded-full transition-all duration-500 ${
+          isScrolled ? 'glass-nav shadow-2xl' : 'bg-transparent'
+        }`}>
           {/* Logo */}
-          <div className="flex items-center gap-2 group cursor-pointer">
-            <span className="text-2xl font-display font-bold tracking-tight text-white hover:opacity-90 transition-opacity">
+          <a href="#" className="flex items-center gap-2 group">
+            <span className="text-2xl font-display font-bold tracking-tighter text-white">
               Tech<span className="text-primary-400">Vani</span>
             </span>
-          </div>
+          </a>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a 
                 key={link.name} 
                 href={link.href}
-                className="text-sm font-medium text-slate-300 hover:text-white transition-colors relative group"
+                className="text-sm font-medium text-slate-400 hover:text-white transition-colors relative group py-2"
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-500 transition-all group-hover:w-full"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-px bg-primary-400 transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
             <a 
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-2.5 rounded-lg bg-primary-600 hover:bg-primary-500 text-white font-medium transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(14,165,233,0.4)] active:scale-95 text-sm"
+              className="px-6 py-2.5 rounded-full bg-white text-black text-sm font-bold hover:bg-primary-500 hover:text-white transition-all duration-300 hover:scale-105 active:scale-95"
             >
-              Agendar Reunião
+              Falar comigo
             </a>
           </div>
 
@@ -62,41 +68,48 @@ const Navbar: React.FC = () => {
           <div className="md:hidden">
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-slate-300 hover:text-white transition-colors"
+              className="p-2 text-white"
             >
-              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
       </div>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 glass-nav border-t border-slate-800 animate-fade-in">
-          <div className="px-4 py-6 space-y-4 flex flex-col items-center">
-             {navLinks.map((link) => (
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden absolute top-full left-0 right-0 glass-nav border-t border-white/5 overflow-hidden"
+          >
+            <div className="px-6 py-12 space-y-8 flex flex-col items-center">
+               {navLinks.map((link) => (
+                <a 
+                  key={link.name} 
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-3xl font-display font-bold text-white hover:text-primary-400 transition-colors"
+                >
+                  {link.name}
+                </a>
+              ))}
               <a 
-                key={link.name} 
-                href={link.href}
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-lg font-medium text-slate-300 hover:text-white transition-colors"
+                className="w-full text-center px-8 py-4 rounded-full bg-white text-black font-bold text-lg"
               >
-                {link.name}
+                Falar comigo
               </a>
-            ))}
-            <a 
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="w-full text-center px-6 py-3 rounded-lg bg-gradient-to-r from-primary-600 to-accent-600 text-white font-bold"
-            >
-              Agendar Reunião
-            </a>
-          </div>
-        </div>
-      )}
-    </nav>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   );
 };
 
