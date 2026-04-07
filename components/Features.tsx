@@ -78,8 +78,8 @@ const Features: React.FC = () => {
       </div>
       
       {/* Decorative background glow */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary-600/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent-600/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary-600/5 rounded-full blur-[80px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent-600/5 rounded-full blur-[80px] pointer-events-none" />
     </section>
   );
 };

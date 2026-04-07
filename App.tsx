@@ -19,14 +19,10 @@ export default function App() {
     
     // Initialize Lenis smooth scroll
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
+      duration: 1,
       smoothWheel: true,
       wheelMultiplier: 1,
-      touchMultiplier: 2,
-      infinite: false,
+      touchMultiplier: 1.5,
     });
 
     function raf(time: number) {

@@ -56,7 +56,7 @@ const Portfolio: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
-              className="group relative aspect-[16/10] rounded-[2rem] overflow-hidden bg-slate-900 border border-white/10"
+              className="group relative aspect-[16/10] rounded-[2rem] overflow-hidden bg-slate-900 border border-white/10 will-change-[transform,opacity]"
             >
               <img 
                 src={project.image} 

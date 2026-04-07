@@ -30,34 +30,20 @@ const Hero: React.FC = () => {
       {/* Background Animation Layer */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 grid-bg opacity-20" />
-        <div className="absolute inset-0 noise-bg" />
         
         {/* Animated Glows */}
         <motion.div 
           animate={{ 
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-            x: [0, 50, 0],
-            y: [0, -30, 0]
+            opacity: [0.1, 0.3, 0.1],
           }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-primary-600/20 rounded-full blur-[120px]" 
-        />
-        <motion.div 
-          animate={{ 
-            scale: [1, 1.3, 1],
-            opacity: [0.2, 0.4, 0.2],
-            x: [0, -40, 0],
-            y: [0, 60, 0]
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-accent-600/15 rounded-full blur-[100px]" 
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary-600/10 rounded-full blur-[80px] will-change-[opacity]" 
         />
       </div>
 
       <motion.div 
         style={{ y, opacity, scale }}
-        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center will-change-transform"
       >
         {/* Badge */}
         <motion.div 
